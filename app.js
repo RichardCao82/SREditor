@@ -137,6 +137,21 @@ function createFeatureCard(key, node, path) {
 	tooltip.appendChild(icon);
 	tooltip.appendChild(bubble);
 	
+	// 动态判断 tooltip 方向
+	tooltip.onmouseenter = () => {
+		const rect = bubble.getBoundingClientRect();
+		const spaceBelow = window.innerHeight - rect.bottom;
+		const spaceAbove = rect.top;
+	
+		bubble.classList.remove("up", "down");
+	
+		if (spaceBelow < 80 && spaceAbove > spaceBelow) {
+			bubble.classList.add("up");   // 向上弹出
+		} else {
+			bubble.classList.add("down"); // 向下弹出
+		}
+	};
+	
 	/* 放到最后 */
 	labelWrapper.appendChild(tooltip);
 	
@@ -351,12 +366,17 @@ function renderFlowList() {
         /* ------------------------------
            插入箭头（不是最后一个）
         ------------------------------ */
-        if (index < flowModules.length - 1) {
-            const arrow = document.createElement("div");
-            arrow.className = "flow-arrow";
-            arrow.textContent = "↓";
-            list.insertBefore(arrow, addBtn);
-        }
+		if (index < flowModules.length - 1) {
+			const arrowWrapper = document.createElement("div");
+			arrowWrapper.className = "flow-arrow-wrapper";
+		
+			const arrow = document.createElement("div");
+			arrow.className = "flow-arrow";
+			arrow.textContent = "↓";
+		
+			arrowWrapper.appendChild(arrow);
+			list.insertBefore(arrowWrapper, addBtn);
+		}
     });
 }
 

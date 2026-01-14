@@ -262,8 +262,6 @@ body {
 
 .tooltip-bubble {
     position: absolute;
-    bottom: 22px;   /* ← 改成向上弹出 */
-    left: 0;
     min-width: 180px;
     max-width: 320px;
     background: rgba(230, 244, 255, 0.95);
@@ -277,11 +275,43 @@ body {
     z-index: 999;
     opacity: 0;
     pointer-events: none;
-    transform: translateY(4px);  /* ← 初始位置向下 */
     transition: opacity 0.18s ease, transform 0.18s ease;
 }
 
-.tooltip-container:hover .tooltip-bubble {
+/* 默认向下 */
+.tooltip-bubble.down {
+    top: 22px;
+    left: 0;
+    transform: translateY(-4px);
+}
+
+.tooltip-container:hover .tooltip-bubble.down {
     opacity: 1;
-    transform: translateY(0);  /* ← 动画向上浮现 */
+    transform: translateY(0);
+}
+
+/* 向上 */
+.tooltip-bubble.up {
+    bottom: 22px;
+    left: 0;
+    transform: translateY(4px);
+}
+
+.tooltip-container:hover .tooltip-bubble.up {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.flow-arrow-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 32px; /* 你可以调整 */
+    width: 100%;
+}
+
+.flow-arrow {
+    font-size: 20px;
+    color: #999;
+    user-select: none;
 }
