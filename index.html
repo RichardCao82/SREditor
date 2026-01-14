@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Device Task Configurator</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="topbar">
+    <div class="topbar-left">
+        <button id="importBtn" class="btn">导入</button>
+        <button id="exportBtn" class="btn primary">导出</button>
+    </div>
+</header>
+
+<main class="layout">
+
+    <!-- 左侧功能区 -->
+    <section id="featurePanel" class="panel">
+        <h2 class="panel-title">功能选择</h2>
+        <div id="featureContainer" class="feature-container"></div>
+    </section>
+
+    <!-- 右侧 Flow 模块区 -->
+    <section id="flowPanel" class="panel">
+        <h2 class="panel-title">Flow 模块</h2>
+
+        <div id="flowList" class="flow-list">
+            <!-- 模块列表 + 最后的 + 按钮 -->
+            <button id="addFlowBtn" class="add-btn">＋</button>
+        </div>
+    </section>
+
+</main>
+
+<!-- 模块编辑对话框 -->
+<div id="moduleDialog" class="dialog hidden">
+    <div class="dialog-content">
+        <div class="dialog-header">
+            <h3>模块编辑</h3>
+            <button id="closeDialog" class="dialog-close">×</button>
+        </div>
+
+        <div id="moduleInfo" class="module-info"></div>
+        <div id="moduleInputEditor" class="module-input-editor"></div>
+
+        <div class="dialog-footer">
+            <button id="saveModuleInput" class="btn primary">保存</button>
+        </div>
+    </div>
+</div>
+
+<!-- 模块选择器 -->
+<div id="modulePicker" class="dialog hidden">
+    <div class="dialog-content">
+        <div class="dialog-header">
+            <h3>选择模块</h3>
+            <button id="closePicker" class="dialog-close">×</button>
+        </div>
+
+        <div id="modulePickerList" class="flow-list"></div>
+    </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,438 @@
+{
+	"readBatteryInfo": {
+		"label": "read battery info",
+		"help": "读取电池基本信息",
+		"type": "boolean",
+		"default": true,
+		"children": {
+			"readBatteryHealthy": {
+				"label": "read battery healthy",
+				"help": "读取电池健康情况",
+				"type": "boolean",
+				"default": true,
+				"children": {
+					"readBatteryHealthyFromLog": {
+						"label": "read battery healthy from log",
+						"help": "需要花费一定的时间，大约40秒。iOS Only for now",
+						"type": "checkbox",
+						"default": false
+					},
+					"stopWhenPoor": {
+						"label": "stop operation and report error when battery health is poor",
+						"help": "红色，立刻报错",
+						"type": "checkbox",
+						"default": false
+					}
+				}
+			},
+			"waitCharging": {
+				"label": "stop operation and wait charging battery",
+				"help": "停止操作，等待电池充电",
+				"type": "boolean",
+				"default": false,
+				"children": {
+					"targetPercent": {
+						"label": "target percent",
+						"type": "select",
+						"options": [
+							5,
+							10,
+							15,
+							20,
+							25,
+							30,
+							35,
+							40,
+							45,
+							50,
+							60,
+							70,
+							80,
+							90,
+							100
+						],
+						"default": 20
+					},
+					"maxWaitMinutes": {
+						"label": "max wait minutes",
+						"type": "text",
+						"default": 20
+					}
+				}
+			}
+		}
+	},
+	"readReplaceComponents": {
+		"label": "read replace components",
+		"help": "需要花费一定的时间，大约40秒。iOS Only for now",
+		"type": "boolean",
+		"default": false,
+		"children": {
+			"stopWhenFound": {
+				"label": "stop operation and report error when find replace components",
+				"help": "红色，立刻报错",
+				"type": "checkbox",
+				"default": false
+			}
+		}
+	},
+	"powerOffAtEnd": {
+		"label": "power off at the end of task",
+		"help": "一些设备关机可能会自己启动",
+		"type": "boolean",
+		"default": false
+	},
+	"activeDeviceAtEnd": {
+		"label": "active device at the end of task",
+		"help": "iOS Only for now",
+		"type": "boolean",
+		"default": false
+	},
+	"skipWelcomeScreen": {
+		"label": "skip welcome screen at the end of task",
+		"help": "iOS Only for now",
+		"type": "boolean",
+		"default": false,
+		"children": {
+			"skipTo": {
+				"label": "skip to screen id",
+				"type": "text",
+				"default": "FFFFFFFFFFFFFFFF"
+			}
+		}
+	},
+	"readSdCard": {
+		"label": "read sd card exist",
+		"help": "读取SD Card信息",
+		"type": "boolean",
+		"default": true,
+		"children": {
+			"stopWhenFound": {
+				"label": "stop operation and report error when find sd card",
+				"help": "红色，立刻报错",
+				"type": "checkbox",
+				"default": false
+			}
+		}
+	},
+	"readSimCard": {
+		"label": "read sim card exist",
+		"help": "读取SIM Card信息",
+		"type": "boolean",
+		"default": true,
+		"children": {
+			"stopWhenFound": {
+				"label": "stop operation and report error when find sim card",
+				"help": "红色，立刻报错",
+				"type": "checkbox",
+				"default": false
+			}
+		}
+	},
+	"readESIMCard": {
+		"label": "read esim card exist",
+		"help": "读取ESIM Card信息",
+		"type": "boolean",
+		"default": true,
+		"children": {
+			"stopWhenFound": {
+				"label": "stop operation and report error when find esim card",
+				"help": "红色，立刻报错",
+				"type": "checkbox",
+				"default": false
+			}
+		}
+	},
+	"readFMI": {
+		"label": "read Find My iPhone",
+		"help": "通过activation读取FMI，未激活则为Unknown。iOS Only",
+		"type": "boolean",
+		"default": true,
+		"children": {
+			"query3rd": {
+				"label": "query 3 party server to get FMI info",
+				"help": "需要额外的花费",
+				"type": "boolean",
+				"default": false,
+				"children": {
+					"useForensic": {
+						"label": "use forensic service",
+						"help": "金色",
+						"type": "checkbox",
+						"default": false
+					},
+					"useProlog": {
+						"label": "use prolog service",
+						"help": "金色",
+						"type": "checkbox",
+						"default": false
+					},
+					"useEcoATM": {
+						"label": "use ecoATM service",
+						"help": "金色",
+						"type": "checkbox",
+						"default": false
+					}
+				}
+			},
+			"stopWhenLocked": {
+				"label": "stop operation and report error when Find My iPhone is LOCKED",
+				"help": "红色，立刻报错",
+				"type": "checkbox",
+				"default": false
+			}
+		}
+	},
+	"removeGoogleAccount": {
+		"label": "remove google account at the begin",
+		"help": "delete google account",
+		"type": "boolean",
+		"default": true
+	},
+	"readFindMyMobile": {
+		"label": "read Find My Mobile",
+		"help": "default通过设备的信息读取，如果没有发现，会报告FMM是Unknown。android Only",
+		"type": "boolean",
+		"default": true,
+		"children": {
+			"query3rdFmm": {
+				"label": "query 3 party server to get FMM info",
+				"help": "需要额外的花费",
+				"type": "boolean",
+				"default": false,
+				"children": {
+					"useSamsungApi": {
+						"label": "use Samsung API service",
+						"help": "金色",
+						"type": "checkbox",
+						"default": false
+					}
+				}
+			},
+			"stopWhenLockedFmm": {
+				"label": "stop operation and report error when Find My Mobile is LOCKED",
+				"help": "红色，立刻报错",
+				"type": "checkbox",
+				"default": false
+			}
+		}
+	},
+	"readFrp": {
+		"label": "read Find re-active protection",
+		"help": "default通过设备的信息读取，如果没有发现，会报告FRP是Unknown。android Only",
+		"type": "boolean",
+		"default": true,
+		"children": {
+			"query3rdFrp": {
+				"label": "query 3 party server to get FRP info",
+				"help": "需要额外的花费",
+				"type": "boolean",
+				"default": false,
+				"children": {
+					"useSamsungApi": {
+						"label": "use Samsung API service",
+						"help": "金色",
+						"type": "checkbox",
+						"default": false
+					}
+				}
+			},
+			"stopWhenLockedFrp": {
+				"label": "stop operation and report error when Find re-active protection is LOCKED",
+				"help": "红色，立刻报错",
+				"type": "checkbox",
+				"default": false
+			}
+		}
+	},
+	"readKme": {
+		"label": "read KME",
+		"help": "samsung KME info。android Only",
+		"type": "boolean",
+		"default": true,
+		"children": {
+			"stopWhenLockedKme": {
+				"label": "stop operation and report error when KME is LOCKED",
+				"help": "红色，立刻报错",
+				"type": "checkbox",
+				"default": false
+			}
+		}
+	},
+	"readDep": {
+		"label": "read DEP",
+		"help": "default通过activation操作读取DEP信息，如果没有得到DEP，会报告DEP是Unknown。iOS Only",
+		"type": "boolean",
+		"default": true,
+		"children": {
+			"mustReadDep": {
+				"label": "MUST read out DEP info",
+				"help": "需要额外的时间，可能需要做设备做fast clear的动作",
+				"type": "boolean",
+				"default": false
+			},
+			"stopWhenLockedDep": {
+				"label": "stop operation and report error when DEP is LOCKED",
+				"help": "红色，立刻报错",
+				"type": "checkbox",
+				"default": false
+			}
+		}
+	},
+	"checkSimLock": {
+		"label": "check SIM LOCK",
+		"help": "通过查询第三方得到sim lock信息",
+		"type": "boolean",
+		"default": false,
+		"children": {
+			"query3rdSimLock": {
+				"label": "query 3 party server to get SIM LOCK info",
+				"help": "需要额外的花费",
+				"type": "boolean",
+				"default": false,
+				"children": {
+					"useForensic": {
+						"label": "use forensic service",
+						"help": "金色",
+						"type": "checkbox",
+						"default": false
+					},
+					"useProlog": {
+						"label": "use prolog service",
+						"help": "金色",
+						"type": "checkbox",
+						"default": false
+					},
+					"useEcoATM": {
+						"label": "use ecoATM service",
+						"help": "金色",
+						"type": "checkbox",
+						"default": false
+					}
+				}
+			},
+			"stopWhenLockedSimLock": {
+				"label": "stop operation and report error when SIM LOCK is LOCKED",
+				"help": "红色，立刻报错",
+				"type": "checkbox",
+				"default": false
+			}
+		}
+	},
+	"checkStolen": {
+		"label": "check Stolen",
+		"help": "通过查询第三方得到Stolen信息",
+		"type": "boolean",
+		"default": false,
+		"children": {
+			"query3rdStolen": {
+				"label": "query 3 party server to get Stolen info",
+				"help": "需要额外的花费",
+				"type": "boolean",
+				"default": false,
+				"children": {
+					"useRecipo": {
+						"label": "use recipo service",
+						"help": "金色",
+						"type": "checkbox",
+						"default": false
+					},
+					"useGsma": {
+						"label": "use GSMA service",
+						"help": "金色",
+						"type": "checkbox",
+						"default": false
+					}
+				}
+			},
+			"stopWhenLockedStolen": {
+				"label": "stop operation and report error when Stolen is LOCKED",
+				"help": "红色，立刻报错",
+				"type": "checkbox",
+				"default": false
+			}
+		}
+	},
+	"queryDeviceFinancialStatus": {
+		"label": "query device financial status",
+		"help": "通过查询第三方得到设备financial状态",
+		"type": "boolean",
+		"default": false,
+		"children": {
+			"query3rdFinancial": {
+				"label": "query 3 party server to get device financial status info",
+				"help": "需要额外的花费",
+				"type": "boolean",
+				"default": false,
+				"children": {
+					"useProlog": {
+						"label": "use prolog service",
+						"help": "金色",
+						"type": "checkbox",
+						"default": false
+					},
+					"useEcoATM": {
+						"label": "use ecoATM service",
+						"help": "金色",
+						"type": "checkbox",
+						"default": false
+					}
+				}
+			}
+		}
+	},
+	"unlockCarrier": {
+		"label": "unlock carrier",
+		"help": "unlock carrier by 3 party service。android Only",
+		"type": "boolean",
+		"default": false
+	},
+	"readJapanNetworkRestriction": {
+		"label": "read japan network restriction status",
+		"help": "read japan network restriction status by 3 party service",
+		"type": "boolean",
+		"default": false,
+		"children": {
+			"stopWhenLockedJapanNetwork": {
+				"label": "stop operation and report error when not find network restriction status LOCKED",
+				"help": "红色，立刻报错",
+				"type": "checkbox",
+				"default": false
+			}
+		}
+	},
+	"readJapanCert": {
+		"label": "read japan regulatory cert",
+		"help": "read japan regulatory cert by 3 party service",
+		"type": "boolean",
+		"default": false,
+		"children": {
+			"stopWhenLockedJapanCert": {
+				"label": "stop operation and report error when not find japan cert",
+				"help": "红色，立刻报错",
+				"type": "checkbox",
+				"default": false
+			}
+		}
+	},
+	"readFelicaInfo": {
+		"label": "read felica info",
+		"help": "read felica info。android Only",
+		"type": "boolean",
+		"default": false,
+		"children": {
+			"stopWhenFelicaFail": {
+				"label": "stop operation and report error when read felica info fail",
+				"help": "红色，立刻报错",
+				"type": "checkbox",
+				"default": false
+			}
+		}
+	},
+	"reportCIResult": {
+		"label": "report field CIResult",
+		"help": "report field CIResult according to customize logic",
+		"type": "boolean",
+		"default": false
+	}
+}

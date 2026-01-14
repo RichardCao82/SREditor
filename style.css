@@ -1,0 +1,287 @@
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
+    background: #f5f5f7;
+    color: #333;
+}
+
+.topbar {
+    height: 56px;
+    padding: 0 20px;
+    background: rgba(255,255,255,0.75);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid #e5e5e5;
+    display: flex;
+    align-items: center;
+}
+
+.btn {
+    padding: 8px 18px;
+    border-radius: 10px;
+    border: 1px solid #d0d0d0;
+    background: #ffffff;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.btn.primary {
+    background: #007aff;
+    color: white;
+    border-color: #007aff;
+}
+
+.layout {
+    display: flex;
+    height: calc(100vh - 56px);
+}
+
+.panel {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    position: relative;
+}
+
+.panel-title {
+    font-size: 20px;
+    margin-bottom: 12px;
+}
+
+/* 左侧功能区 */
+.feature-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.feature-card {
+    background: white;
+    border-radius: 14px;
+    padding: 14px 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+
+.feature-header {
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.feature-children {
+    margin-top: 10px;
+    padding-left: 16px;
+}
+
+.collapsible {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.25s ease, opacity 0.25s ease;
+}
+
+.collapsible.open {
+    max-height: 800px;
+    opacity: 1;
+}
+
+/* Switch */
+.switch {
+    width: 44px;
+    height: 24px;
+    background: #d6d6d6;
+    border-radius: 20px;
+    position: relative;
+    cursor: pointer;
+}
+
+.switch.on {
+    background: #34c759;
+}
+
+.switch::after {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 20px;
+    height: 20px;
+    background: white;
+    border-radius: 50%;
+    transition: transform 0.2s ease;
+}
+
+.switch.on::after {
+    transform: translateX(20px);
+}
+
+/* Checkbox */
+.checkbox {
+    width: 18px;
+    height: 18px;
+    border: 2px solid #c8c8c8;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.checkbox.checked {
+    background: #007aff;
+    border-color: #007aff;
+}
+
+.checkbox.checked::after {
+    content: "✓";
+    color: white;
+    font-size: 14px;
+    position: relative;
+    left: 2px;
+}
+
+/* Flow 区域 */
+.flow-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* 模块卡片 */
+.flow-item {
+    background: white;
+    padding: 14px 16px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    cursor: grab;
+    position: relative;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* 左侧竖线 */
+.flow-item::before {
+    content: "";
+    position: absolute;
+    left: -18px;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: #d0d0d0;
+    border-radius: 2px;
+}
+
+/* hover 浮起 */
+.flow-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+/* 拖拽中 */
+.flow-item.dragging {
+    opacity: 0.5;
+    transform: scale(0.98);
+}
+
+/* 占位符 */
+.flow-placeholder {
+    height: 60px;
+    background: rgba(0, 122, 255, 0.15);
+    border: 2px dashed #007aff;
+    border-radius: 12px;
+}
+
+/* 箭头 */
+.flow-arrow {
+    text-align: left;
+    font-size: 28px;
+    color: #999;
+    padding-left: 40px;
+}
+
+/* + 按钮 */
+.add-btn {
+    margin: 20px auto;
+    display: block;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    font-size: 40px;
+    border: none;
+    background: #007aff;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+
+/* 对话框 */
+.dialog {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.35);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dialog.hidden {
+    display: none;
+}
+
+.dialog-content {
+    width: 520px;
+    max-height: 80vh;
+    background: white;
+    border-radius: 16px;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.dialog-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.dialog-close {
+    background: none;
+    border: none;
+    font-size: 26px;
+    cursor: pointer;
+}
+
+/* Apple-style tooltip */
+.tooltip-container {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    margin-left: 6px;
+    cursor: pointer;
+}
+
+.tooltip-icon {
+    font-size: 14px;
+    color: #007aff;
+    font-weight: bold;
+}
+
+.tooltip-bubble {
+    position: absolute;
+    bottom: 22px;   /* ← 改成向上弹出 */
+    left: 0;
+    min-width: 180px;
+    max-width: 320px;
+    background: rgba(230, 244, 255, 0.95);
+    color: #003a66;
+    padding: 10px 14px;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    font-size: 13px;
+    line-height: 1.45;
+    white-space: normal;
+    z-index: 999;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(4px);  /* ← 初始位置向下 */
+    transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+.tooltip-container:hover .tooltip-bubble {
+    opacity: 1;
+    transform: translateY(0);  /* ← 动画向上浮现 */
+}
