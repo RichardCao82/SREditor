@@ -1,0 +1,64 @@
+logi_queryDMServer.py
+logi_saveXMLFile.py
+logi_verifyIMEI.py
+
+fd module list
+1. getUsbInfo (comport, adbinterface, ios recovery/normal, need TRUST, VID, PID)
+2. readBasicInfo (sd, sim, esim, FMI, FMM, FRP, DEP, EID, airplane, assistiveTouch)
+3. installFdBoxApk (manual_install_apk)
+4. change language back to original
+5. deviceStatus - check iOS under which status （welcome/home/recovery）
+6. deviceConnected - check if device connected
+7. deviceSupportAT
+8. autoOpenADB
+9. userAction
+
+user module list
+1. fastClean
+2. refurbish
+3. deepClean
+4. dataCheck - check if device is clean (eg: welcome + unactived)
+5. installFunctionTest(read function test result first)
+6. installWifiProfile - install wifi profile before function test or at the end of task
+7. installApps and profile - (ft, radi)install apps at the end of task, may based on make + model
+8. manualInput
+9. queryDecisionServer - query DM server get data
+10. customerUserData - report specific data based on read out data
+11. reportCIResult - CIRsult logic
+
+
+
+option list
+1. activeDevice - active device at the end of task (default NO)
+2. skipWelcome - skip welcome at the end of task (default NO)
+3. powerDeviceOff - power off device at the end of task (default NO)
+##########4. installWifiProfile - install wifi profile at the end of task (default NO)
+##########5. installApps - (ft, radi)install apps at the end of task (default NO)
+
+
+
+
+
+{
+	"moduleLogicName": "fastClean_flow",
+	"moduleName": "fastClean",
+	"description": "fast clean the device on a specific USB port. fast clean also erase esim card information. iOS ONLY. device MUST under activation status",
+	"dependenceModule": ["activeDevice", "refurbish"],
+	"input": {
+		"_port": "3",
+		"howManyLatestVersionSupportFastClear": "all",     # support all, 1, 2, 3
+		"retryTimeWhenFail": "2",
+		"retryInterval": "1",
+		"moduleTimeout": "120",
+		"_comment": "1. timeout and retry, which will appear first and which will be used 2. _port parameter come from API interface 3. howManyLatestVersionSupportFastClear, all - meaning all version can do fast clear 1 - meaning latest 1 version support 2 - meaning latest 2 version support 3 - meaning latest 3 version support"
+	},
+	"result_description": {
+		"-1": "failure, exception",
+		"0": "success, fast clean device success",
+		"1": "failure, fast clean device failure",
+		"2": "failure, not iOS device",
+		"3": "failure, no UDID, device may not under normal mode",
+		"4": "failure, iOS Version is not allow to do fast clear",
+		"1460": "failure, timeout"
+	}
+}

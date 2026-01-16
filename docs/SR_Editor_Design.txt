@@ -1,0 +1,152 @@
+设计一个静态网页，主要功能是根据用户的选择情况，生成一个json文件，并提供下载
+该网页包含2个部分
+左侧显示需要的功能
+右侧显示一个flow模块的编辑
+
+左侧的功能区
+1. 加载一个本地的json文件，请根据功能定义文件格式
+2. 左侧提供给客户，需要哪些功能
+每个功能有switch，checkbox等格式，并且每个功能都有帮助信息显示
+
+“read battery info” （switch），default is on （帮助信息为，读取电池基本信息）
+	在“read battery info”是on的情况下，显示读取电池健康情况
+	“read battery healthy”， （switch），default is on （帮助信息为，读取电池健康情况）
+		在“read battery healthy”是on的情况下，显示额外的选项信息
+			“read battery healthy from log”， （checkbox），default is off  （帮助信息为，需要花费一定的时间，大约40秒。iOS Only for now）
+			“stop operation and report error when battery health is poor”， （checkbox），default is off  （帮助信息为，红色，立刻报错）
+	“stop operation and wait charging battery”， （switch），default is off （帮助信息为，停止操作，等待电池充电）
+		在“stop operation and wait charging battery”是on的情况下，显示额外的选项信息
+		提供一个list，让用户选择充电到达的百分比，5，10，15,20...100,default是20
+		提供一个textbox，让用户输入最大的等待时间,default是20，单位是分钟
+
+"read replace components" (switch), default is off  （帮助信息为，需要花费一定的时间，大约40秒。iOS Only for now）
+	在“read replace components”是on的情况下，显示额外的选项信息	
+	“stop operation and report error when find replace components”， （checkbox），default is off  （帮助信息为，红色，立刻报错）
+"power off at the end of task" (switch), default is off  （帮助信息为，一些设备关机可能会自己启动）
+"active device at the end of task" (switch), default is off  （帮助信息为，iOS Only for now）
+“skip welcome screen at the end of task” （switch），default is off （帮助信息为，iOS Only for now）
+	在“skip welcome screen at the end of task”是on的情况下，显示额外的选项信息
+	提供一个textbox，让用户输入哪个界面需要跳过,default是FFFFFFFFFFFFFFFF
+"read sd card exist" (switch), default is on  （帮助信息为，读取SD Card信息）
+	在“read sd card”是on的情况下，显示额外的选项信息	
+	“stop operation and report error when find sd card”， （checkbox），default is off  （帮助信息为，红色，立刻报错）
+"read sim card exist" (switch), default is on  （帮助信息为，读取SIM Card信息）
+	在“read sim card”是on的情况下，显示额外的选项信息	
+	“stop operation and report error when find sim card”， （checkbox），default is off  （帮助信息为，红色，立刻报错）
+"read esim card exist" (switch), default is on  （帮助信息为，读取ESIM Card信息）
+	在“read esim card”是on的情况下，显示额外的选项信息	
+	“stop operation and report error when find esim card”， （checkbox），default is off  （帮助信息为，红色，立刻报错）
+"read Find My iPhone" (switch), default is on  （帮助信息为，default通过activation操作读取FMI信息，如果没有做activation操作，会报告FMI是Unknown。iOS Only）
+	在“read Find My iPhone”是on的情况下，显示额外的选项信息	
+	“query 3 party server to get FMI info”， （switch），default is off  （帮助信息为，需要额外的花费）
+		“use forensic service”， （checkbox），default is off  （帮助信息为，金色）
+		“use prolog service”， （checkbox），default is off  （帮助信息为，金色）
+		“use ecoATM service”， （checkbox），default is off  （帮助信息为，金色）
+	“stop operation and report error when Find My iPhone is LOCKED”， （checkbox），default is off  （帮助信息为，红色，立刻报错）
+“remove google account at the begin” （switch），default is on （帮助信息为，delete google account）
+"read Find My Mobile" (switch), default is on  （帮助信息为，default通过设备的信息读取，如果没有发现，会报告FMM是Unknown。android Only）
+	在“read Find My Mobile”是on的情况下，显示额外的选项信息	
+	“query 3 party server to get FMM info”， （switch），default is off  （帮助信息为，需要额外的花费）
+		在“query 3 party server to get FMM info”是on的情况下，显示额外的选项信息
+		“use Samsung API service”， （checkbox），default is off  （帮助信息为，金色）
+	“stop operation and report error when Find My Mobile is LOCKED”， （checkbox），default is off  （帮助信息为，红色，立刻报错）
+"read Find re-active protection" (switch), default is on  （帮助信息为，default通过设备的信息读取，如果没有发现，会报告FRP是Unknown。android Only）
+	在“read Find re-active protection”是on的情况下，显示额外的选项信息	
+	“query 3 party server to get FRP info”， （switch），default is off  （帮助信息为，需要额外的花费）
+		在“query 3 party server to get FRP info”是on的情况下，显示额外的选项信息
+		“use Samsung API service”， （checkbox），default is off  （帮助信息为，金色）
+	“stop operation and report error when Find re-active protection is LOCKED”， （checkbox），default is off  （帮助信息为，红色，立刻报错）
+“read KME” （switch），default is on （帮助信息为，samsung KME info。android Only）
+	“stop operation and report error when KME is LOCKED”， （checkbox），default is off  （帮助信息为，红色，立刻报错）
+“read DEP” （switch），default is on （帮助信息为，default通过activation操作读取DEP信息，如果没有得到DEP，会报告DEP是Unknown。iOS Only）
+	在“read DEP”是on的情况下，显示额外的选项信息	
+	“MUST read out DEP info”， （switch），default is off  （帮助信息为，需要额外的时间，可能需要做设备做fast clear的动作）
+	“stop operation and report error when DEP is LOCKED”， （checkbox），default is off  （帮助信息为，红色，立刻报错）
+"check SIM LOCK" (switch), default is off  （帮助信息为，通过查询第三方得到sim lock信息）
+	在“check SIM LOCK”是on的情况下，显示额外的选项信息	
+	“query 3 party server to get SIM LOCK info”， （switch），default is off  （帮助信息为，需要额外的花费）
+		“use forensic service”， （checkbox），default is off  （帮助信息为，金色）
+		“use prolog service”， （checkbox），default is off  （帮助信息为，金色）
+		“use ecoATM service”， （checkbox），default is off  （帮助信息为，金色）
+	“stop operation and report error when SIM LOCK is LOCKED”， （checkbox），default is off  （帮助信息为，红色，立刻报错）
+"check Stolen" (switch), default is off  （帮助信息为，通过查询第三方得到Stolen信息）
+	在“check Stolen”是on的情况下，显示额外的选项信息	
+	“query 3 party server to get Stolen info”， （switch），default is off  （帮助信息为，需要额外的花费）
+		“use recipo service”， （checkbox），default is off  （帮助信息为，金色）
+		“use GSMA service”， （checkbox），default is off  （帮助信息为，金色）
+	“stop operation and report error when Stolen is LOCKED”， （checkbox），default is off  （帮助信息为，红色，立刻报错）
+"query device financial status" (switch), default is off  （帮助信息为，通过查询第三方得到Stolen信息）
+	在“query device financial status”是on的情况下，显示额外的选项信息	
+	“query 3 party server to get device financial status info”， （switch），default is off  （帮助信息为，需要额外的花费）
+		“use prolog service”， （checkbox），default is off  （帮助信息为，金色）
+		“use ecoATM service”， （checkbox），default is off  （帮助信息为，金色）
+“unlock carrier” （switch），default is off （帮助信息为，unlock carrier by 3 party service。android Only）
+“read japan network restriction status” （switch），default is off （帮助信息为，read japan network restriction status by 3 party service）
+	“stop operation and report error when not find network restriction status LOCKED”， （checkbox），default is off  （帮助信息为，红色，立刻报错）
+“read japan regulatory cert” （switch），default is off （帮助信息为，read japan regulatory cert by 3 party service）
+	“stop operation and report error when not find japan cert”， （checkbox），default is off  （帮助信息为，红色，立刻报错）
+“read felica info” （switch），default is off （帮助信息为，read felica info。android Only）
+	“stop operation and report error when read felica info fail”， （checkbox），default is off  （帮助信息为，红色，立刻报错）
+
+
+
+左侧的flow模块区
+1. 加载一个本地的json文件
+2. 显示一个大的 + ，用户点击后，显示一个列表和另一个 + 
+这样循环，直到用户不再点击 +，列表来自于步骤1的本地json的数据
+
+该json的格式是一个json数组，数组里面的一个item大概是下面的样子
+每个item都有"moduleName",该值就是该模块的唯一名字值，所有模块不能重复
+每个item都有"moduleDispalyName",该值就是显示在上面步骤2种列表的一个item的名字
+每个item都有"description",该值描述该模块的作用
+每个item都有"dependence",该值描述该模块的依赖
+每个item都有"input",该值为一个json object
+每个item都有"result_description",该值的key表示该模块有可能的error code，value表示该error code的描述
+{
+	"moduleName": "refurbish",
+	"moduleDispalyName": "refurbish task",
+	"description": "refurbish the device on a specific USB port",
+	"dependence": "1. The device type information(iOS or Android) comes from the module getUsbInfo in the database. 2. android device, the fdbox723.apk already install by module installApps",
+	"input": {
+		"customDataTag": "iosRefurbishTask",
+		"customizeIpsw": {
+			"ipswFolder": "",
+			"customizeIpsw": {}
+		},
+		"_customizeIpswSample": {
+			"ipswFolder": "c:/dmg",
+			"customizeIpsw": {
+				"iPhone14,2": {
+					"ipsw": "iPhone14,2_15.1.1_19B81_Restore.ipsw",
+					"dmg": "018-98872-002.dmg"
+				},
+				"iPhone14,3": {
+					"ipsw": "iPhone14,3_15.1.1_19B81_Restore.ipsw",
+					"dmg": "018-98883-002.dmg"
+				}
+			}
+		},
+		"retryTimeWhenFail": "2",
+		"retryInterval": "1",
+		"moduleTimeout": "3600",
+		"_comment": "1. timeout and retry, which will appear first and which will be used 2. _port parameter come from API interface"
+	},
+	"result_description": {
+		"-1": "failure, exception",
+		"0": "success, refurbish device success",
+		"1": "failure, refurbish device failure",
+		"2": "not support android"
+	}
+}
+
+3. 用户双击模块后，弹出一个对话框
+	显示"moduleName",不可以编辑
+	显示"moduleDispalyName",不可以编辑
+	显示"description",不可以编辑
+	显示"dependence",不可以编辑
+	显示"result_description",不可以编辑
+	显示"input",可以编辑，根据json object的格式，显示对应的表格，让用户编辑
+	
+4. 在网页的最上面，显示2个按钮，导入和导出
+   导出： 把上面的左侧的功能区和右侧flow区域的内容，组织成一个合理格式的json文件，并让用户下载
+   导入： 导入上面的json文件，形成网页内容
