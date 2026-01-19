@@ -434,5 +434,31 @@
 		"help": "report field CIResult according to customize logic",
 		"type": "boolean",
 		"default": false
+	},
+	"mustWaitUserResponse": {
+		"label": "for certain user action message, the system will pause and then MSUT wait for a user response before continuing.",
+		"help": "default is not wait user response",
+		"type": "boolean",
+		"default": false,
+		"children": {
+			"ADBInterface": {
+				"label": "ask user open ADB interface and click TRUST on the device",
+				"help": "settings -> About phone -> Softawre information -> Build number",
+				"type": "checkbox",
+				"default": false
+			},
+			"AndroidTrust": {
+				"label": "ask user click TRUST on the android device",
+				"help": "unplug the device and then plug it back in to trigger the trust prompt on the device.",
+				"type": "checkbox",
+				"default": false
+			},
+			"iOSTrust": {
+				"label": "ask user click TRUST on the iOS device",
+				"help": "unplug the device and then plug it back in to trigger the trust prompt on the device.",
+				"type": "checkbox",
+				"default": false
+			}
+		}
 	}
 }
