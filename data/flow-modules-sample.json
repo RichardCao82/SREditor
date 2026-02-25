@@ -1,10 +1,15 @@
 [
 	{
 		"moduleName": "fastClean",
-		"description": "fast clean the device on a specific USB port",
+		"displayName": "fastClean",
+		"_displayName": "this is for UI only",
+		"version": "1.0",
+		"description": "fast clean the device on a specific USB port.",
 		"dependence": "The device type information(iOS or Android) comes from the module getUsbInfo in the database",
 		"input": {
 			"_port": "3",
+			"queryDecisionServerFirst": "",
+			"_queryDecisionServerFirst": "empty means not query DM server",
 			"retryTimeWhenFail": "2",
 			"retryInterval": "1",
 			"moduleTimeout": "120",
@@ -19,8 +24,10 @@
 		}
 	},
 	{
-		"moduleName": "refurbish",
-		"moduleDispalyName": "refurbish task",
+		"moduleName": "flash",
+		"displayName": "flash",
+		"_displayName": "this is for UI only",
+		"version": "1.0",
 		"description": "refurbish the device on a specific USB port",
 		"dependence": "1. The device type information(iOS or Android) comes from the module getUsbInfo in the database. 2. android device, the fdbox723.apk already install by module installApps",
 		"input": {
@@ -42,6 +49,8 @@
 					}
 				}
 			},
+			"queryDecisionServerFirst": "",
+			"_queryDecisionServerFirst": "empty means not query DM server",
 			"retryTimeWhenFail": "2",
 			"retryInterval": "1",
 			"moduleTimeout": "3600",
@@ -55,13 +64,17 @@
 		}
 	},
 	{
-		"moduleLogicName": "deepClean_flow",
 		"moduleName": "deepClean",
+		"displayName": "deepClean",
+		"_displayName": "this is for UI only",
+		"version": "1.0",
 		"description": "deep clean the device on a specific USB port.",
 		"dependence": "The device type information(iOS or Android) comes from the module getUsbInfo in the database",
 		"input": {
 			"_port": "3",
 			"deepCleanMethodName": "OneTime_Rdm",
+			"queryDecisionServerFirst": "",
+			"_queryDecisionServerFirst": "empty means not query DM server",
 			"retryTimeWhenFail": "1",
 			"retryInterval": "1",
 			"moduleTimeout": "181000",
@@ -77,10 +90,15 @@
 	},
 	{
 		"moduleName": "dataCheck",
+		"displayName": "dataCheck",
+		"_displayName": "this is for UI only",
+		"version": "1.0",
 		"description": "check if device under welcome screen and under unactivated status",
 		"dependence": "1. The device type information(iOS or Android) comes from the module getUsbInfo in the database. 2. already read info by module readBasicInfo",
 		"input": {
 			"_port": "3",
+			"queryDecisionServerFirst": "",
+			"_queryDecisionServerFirst": "empty means not query DM server",
 			"retryTimeWhenFail": "1",
 			"retryInterval": "1",
 			"moduleTimeout": "120",
@@ -94,6 +112,9 @@
 	},
 	{
 		"moduleName": "installFunctionTest",
+		"displayName": "installFunctionTest",
+		"_displayName": "this is for UI only",
+		"version": "1.0",
 		"description": "install function test app, profile and tmp file on the device on a specific USB port.",
 		"dependence": "The device type information(iOS or Android) comes from the module getUsbInfo in the database",
 		"input": {
@@ -105,6 +126,8 @@
 			"ardApp": "",
 			"iosProfile": "%apsthome%/function_test/CRTC_IOS Default.zip",
 			"ardProfile": "",
+			"queryDecisionServerFirst": "",
+			"_queryDecisionServerFirst": "empty means not query DM server",
 			"retryTimeWhenFail": "1",
 			"retryInterval": "1",
 			"moduleTimeout": "300",
@@ -128,6 +151,9 @@
 	},
 	{
 		"moduleName": "installWifiProfile",
+		"displayName": "installWifiProfile",
+		"_displayName": "this is for UI only",
+		"version": "1.0",
 		"description": "install wifi profile to device on a specific USB port",
 		"dependence": "The device type information(iOS or Android) comes from the module getUsbInfo in the database",
 		"input": {
@@ -138,6 +164,8 @@
 			],
 			"wifiProfileFolder": "%apsthome%/3Party/wifi",
 			"_wifiProfileFolder": "if wifiProfileFolder is not empty, will use wifiProfileFolder and ignore wifiProfileFiles",
+			"queryDecisionServerFirst": "",
+			"_queryDecisionServerFirst": "empty means not query DM server",
 			"retryTimeWhenFail": "2",
 			"retryInterval": "1",
 			"moduleTimeout": "900",
@@ -154,11 +182,16 @@
 	},
 	{
 		"moduleName": "installApps",
+		"displayName": "installApps",
+		"_displayName": "this is for UI only",
+		"version": "1.0",
 		"description": "install apps to device on a specific USB port",
 		"dependence": "The device type information(iOS or Android) comes from the module getUsbInfo in the database",
 		"input": {
 			"_port": "3",
 			"apps": [],
+			"queryDecisionServerFirst": "",
+			"_queryDecisionServerFirst": "empty means not query DM server",
 			"retryTimeWhenFail": "2",
 			"retryInterval": "1",
 			"moduleTimeout": "120",
@@ -177,11 +210,16 @@
 	},
 	{
 		"moduleName": "manualInput",
+		"displayName": "manualInput",
+		"_displayName": "this is for UI only",
+		"version": "1.0",
 		"description": "manual input some data",
 		"dependence": "",
 		"input": {
 			"_port": "3",
 			"dataDefine": {},
+			"queryDecisionServerFirst": "",
+			"_queryDecisionServerFirst": "empty means not query DM server",
 			"retryTimeWhenFail": "2",
 			"retryInterval": "1",
 			"moduleTimeout": "120",
@@ -196,13 +234,18 @@
 	},
 	{
 		"moduleName": "queryDecisionServer",
-		"description": "send request to decition server and get response(getFlowInfo.exe)",
+		"displayName": "queryDecisionServer",
+		"_displayName": "this is for UI only",
+		"version": "1.0",
+		"description": "send request to decition server and get response then save it to database(getFlowInfo.exe)",
 		"dependence": "1. The device type information(iOS or Android) comes from the module getUsbInfo in the database. 2. already read info by module readBasicInfo 3. already create customize field by module logi_fdField.py",
 		"input": {
 			"_port": "3",
 			"server": "FD",
 			"_server": "FD or LifeCycle",
 			"action": "",
+			"queryDecisionServerFirst": "",
+			"_queryDecisionServerFirst": "empty means not query DM server",
 			"retryTimeWhenFail": "1",
 			"retryInterval": "1",
 			"moduleTimeout": "120",
@@ -216,7 +259,10 @@
 		}
 	},
 	{
-		"moduleName": "create customer data",
+		"moduleName": "createCustomerData",
+		"displayName": "createCustomerData",
+		"_displayName": "this is for UI only",
+		"version": "1.0",
 		"description": "create some FD and customer field",
 		"dependence": "The device type information(iOS or Android) comes from the module getUsbInfo in the database",
 		"input": {
@@ -224,6 +270,8 @@
 			"api": "4",
 			"prefix": "FD",
 			"data": {},
+			"queryDecisionServerFirst": "",
+			"_queryDecisionServerFirst": "empty means not query DM server",
 			"retryTimeWhenFail": "1",
 			"retryInterval": "1",
 			"moduleTimeout": "300",

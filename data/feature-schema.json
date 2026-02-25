@@ -178,6 +178,20 @@
 			}
 		}
 	},
+	"readSIMTray": {
+		"label": "read sim tray insert",
+		"help": "检查SIM Tray是否正确的插入",
+		"type": "boolean",
+		"default": true,
+		"children": {
+			"stopWhenFound": {
+				"label": "stop operation and report error when sim tray insert not correct",
+				"help": "红色，立刻报错",
+				"type": "checkbox",
+				"default": false
+			}
+		}
+	},
 	"readFMI": {
 		"label": "read Find My iPhone",
 		"help": "通过activation读取FMI，未激活则为Unknown。iOS Only",
