@@ -142,6 +142,12 @@
 		"type": "boolean",
 		"default": true,
 		"children": {
+			"askUserHelp": {
+				"label": "ask user remove sd card when find sd card",
+				"help": "ask user remove sd card when find sd card",
+				"type": "checkbox",
+				"default": true
+			},
 			"stopWhenFound": {
 				"label": "stop operation and report error when find sd card",
 				"help": "红色，立刻报错",
@@ -156,6 +162,12 @@
 		"type": "boolean",
 		"default": true,
 		"children": {
+			"askUserHelp": {
+				"label": "ask user remove sim card when find sim card",
+				"help": "ask user remove sim card when find sim card",
+				"type": "checkbox",
+				"default": true
+			},
 			"stopWhenFound": {
 				"label": "stop operation and report error when find sim card",
 				"help": "红色，立刻报错",
@@ -170,6 +182,12 @@
 		"type": "boolean",
 		"default": true,
 		"children": {
+			"askUserHelp": {
+				"label": "ask user remove esim card when find esim card",
+				"help": "ask user remove esim card when find esim card",
+				"type": "checkbox",
+				"default": false
+			},
 			"stopWhenFound": {
 				"label": "stop operation and report error when find esim card",
 				"help": "红色，立刻报错",
@@ -184,6 +202,12 @@
 		"type": "boolean",
 		"default": true,
 		"children": {
+			"askUserHelp": {
+				"label": "ask user correct sim tray",
+				"help": "ask user correct sim tray",
+				"type": "checkbox",
+				"default": false
+			},
 			"stopWhenFound": {
 				"label": "stop operation and report error when sim tray insert not correct",
 				"help": "红色，立刻报错",
