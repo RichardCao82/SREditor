@@ -206,7 +206,7 @@
 				"label": "ask user correct sim tray",
 				"help": "ask user correct sim tray",
 				"type": "checkbox",
-				"default": false
+				"default": true
 			},
 			"stopWhenFound": {
 				"label": "stop operation and report error when sim tray insert not correct",
