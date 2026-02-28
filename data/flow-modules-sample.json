@@ -31,7 +31,6 @@
 		"description": "refurbish the device on a specific USB port",
 		"dependence": "1. The device type information(iOS or Android) comes from the module getUsbInfo in the database. 2. android device, the fdbox723.apk already install by module installApps",
 		"input": {
-			"customDataTag": "iosRefurbishTask",
 			"customizeIpsw": {
 				"ipswFolder": "",
 				"customizeIpsw": {}
@@ -73,6 +72,7 @@
 		"input": {
 			"_port": "3",
 			"deepCleanMethodName": "OneTime_Rdm",
+			"_deepCleanMethodName": "DoD, DoD7, DoE, NSA, USAirForce, USArmy, USNavy, Canada_RCMP, Canada_CSEC, UK, UK1, German, Australia, Australia_15, NewZealand, Russia, BSchneier, PGutmann, Pfitzner, OneTime_0, OneTime_1, OneTime_Rdm, NTime_Rdm, LLFormat, OPNAV, NSA130",
 			"queryDecisionServerFirst": "",
 			"_queryDecisionServerFirst": "empty means not query DM server",
 			"retryTimeWhenFail": "1",
@@ -218,6 +218,7 @@
 		"input": {
 			"_port": "3",
 			"dataDefine": {},
+			"waitUserResponse": "true",
 			"queryDecisionServerFirst": "",
 			"_queryDecisionServerFirst": "empty means not query DM server",
 			"retryTimeWhenFail": "2",
@@ -255,32 +256,6 @@
 			"-1": "failure, exception",
 			"0": "success, get dynamic data success",
 			"1": "failure, get dynamic data failure",
-			"1460": "failure, timeout"
-		}
-	},
-	{
-		"moduleName": "createCustomerData",
-		"displayName": "createCustomerData",
-		"_displayName": "this is for UI only",
-		"version": "1.0",
-		"description": "create some FD and customer field",
-		"dependence": "The device type information(iOS or Android) comes from the module getUsbInfo in the database",
-		"input": {
-			"_port": "3",
-			"api": "4",
-			"prefix": "FD",
-			"data": {},
-			"queryDecisionServerFirst": "",
-			"_queryDecisionServerFirst": "empty means not query DM server",
-			"retryTimeWhenFail": "1",
-			"retryInterval": "1",
-			"moduleTimeout": "300",
-			"_comment": "1. timeout and retry, which will appear first and which will be used 2. _port parameter come from API interface 3. parameter jsonFileOfMakerModel default value is %APSTHOME%/temp/loadAppsbasedonmodel.json"
-		},
-		"result_description": {
-			"-1": "failure, exception",
-			"0": "success, create some FD field success",
-			"1": "failure, create some FD field failure",
 			"1460": "failure, timeout"
 		}
 	}
