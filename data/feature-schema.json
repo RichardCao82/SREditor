@@ -514,6 +514,12 @@
 		"type": "boolean",
 		"default": false,
 		"children": {
+			"ConnectDevice": {
+				"label": "ask user connect device to PC",
+				"help": "",
+				"type": "checkbox",
+				"default": false
+			},
 			"ADBInterface": {
 				"label": "ask user open ADB interface and click TRUST on the device",
 				"help": "settings -> About phone -> Softawre information -> Build number",
