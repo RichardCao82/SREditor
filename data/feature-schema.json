@@ -488,20 +488,6 @@
 			}
 		}
 	},
-	"readFelicaInfo": {
-		"label": "read felica info",
-		"help": "read felica info。android Only",
-		"type": "boolean",
-		"default": false,
-		"children": {
-			"stopWhenFelicaFail": {
-				"label": "stop operation and report error when read felica info fail",
-				"help": "红色，立刻报错",
-				"type": "checkbox",
-				"default": false
-			}
-		}
-	},
 	"reportCIResult": {
 		"label": "report field CIResult",
 		"help": "report field CIResult according to customize logic",
